@@ -103,7 +103,7 @@ cerrarModal.addEventListener("click", () => {
 });
 
 const ventanaMensaje = document.querySelector(".VentanaMensaje");
-
+const botonCerrar = document.querySelector(".cerrar");
 const btnConfirmar = document.querySelector(".btnConfirmar");
 btnConfirmar.addEventListener("click", () => {
     //ocultar ventana modal
@@ -151,7 +151,7 @@ btnConfirmar.addEventListener("click", () => {
         .then((data) => {
             document.querySelector("#MensajeEspera").textContent = data.message;
             setTimeout(() => {
-                document.querySelector(".cerrar").style.display = "block";
+                botonCerrar.style.display = "block";
                 // document.querySelector(".btnDescargar").style.display = "block";
                 // document.querySelector(".contenedor-video").style.display = "block";
             }, 3000);
@@ -169,7 +169,6 @@ btnConfirmar.addEventListener("click", () => {
 //         video.src = data.url;
 //     });
 
-const cerrarMensaje = document.querySelector(".cerrar");
-cerrarMensaje.addEventListener("click", () => {
+botonCerrar.addEventListener("click", () => {
     ventanaMensaje.style.display = "none";
 });
