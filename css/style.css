@@ -1,0 +1,295 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@100..900&family=Poppins:ital,wght@0,300;0,500;1,200&display=swap");
+* {
+    font-family: "Noto Sans Mono", monospace;
+    box-sizing: border-box;
+    margin: 0;
+}
+
+.encabezado {
+    color: #f2f5ea;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    font-size: 40px;
+    font-weight: 100;
+    font-family: "Bodoni Moda", serif;
+}
+section {
+    background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("../assets/fondo-section3.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.formulario {
+    background-color: rgba(165, 162, 162, 0.2);
+    backdrop-filter: blur(10px);
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    max-width: 940px;
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.formulario div {
+    width: 50%;
+}
+.cont-inputs input,
+.cont-inputs textarea {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(5px);
+    transition: transform 0.3s ease;
+}
+
+.cont-inputs input:hover,
+.cont-inputs textarea:hover {
+    transform: scale(1.05);
+}
+
+.cont-inputs input:focus,
+.cont-inputs textarea:focus {
+    background-color: rgba(255, 255, 255, 0.7);
+    outline: none;
+}
+
+.cont-inputs textarea {
+    resize: none;
+}
+
+.envio {
+    text-align: center;
+    background: linear-gradient(90deg, #344055, #252627);
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+    transition: transform 0.3s ease;
+}
+
+.envio:hover {
+    transform: scale(1.05);
+}
+
+/* Estilos para el carrusel de imagenes */
+.encabezadoCarrusel {
+    color: #f2f5ea;
+    font-size: 40px;
+    font-weight: 100;
+    font-family: "Bodoni Moda", serif;
+}
+.carrusel-imagenes {
+    display: none;
+    background-color: rgba(165, 162, 162, 0.2);
+    backdrop-filter: blur(20px);
+    width: 80%;
+    max-width: 900px;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.contenedor-img {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch; /* Para mejorar el scroll en dispositivos iOS */
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+.contenedor-img img {
+    cursor: pointer;
+    width: 100%;
+    max-width: 500px;
+    max-height: 500px;
+    margin-right: 10px;
+    border-radius: 10px;
+}
+.contenedor-img img:hover {
+    transform: scale(1.02);
+    transition: 0.3s;
+}
+
+.contenedor-img img:last-child {
+    margin-right: 0;
+}
+
+/* Ventana modal  */
+.ventanaModal {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 50;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.modal-content {
+    width: 100%;
+    max-width: 400px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+.modal-content-img img {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+}
+.botones-modal {
+    text-align: center;
+    padding: 10px;
+    background-color: #f5f5f5;
+}
+
+.botones-modal button {
+    padding: 9px 40px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.btnConfirmar {
+    color: #000;
+    background-color: #86cd82;
+}
+.btnCancelar {
+    color: #000;
+    background-color: #ef3054;
+}
+
+.btnConfirmar:hover {
+    color: #fff;
+    background-color: #000;
+    transition: 0.4s;
+}
+
+.btnCancelar:hover {
+    color: #fff;
+    background-color: #000;
+    transition: 0.4s;
+}
+
+/* Ventana Mensaje y video creado*/
+
+.VentanaMensaje {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    animation: mostrarModal 1s ease-out forwards;
+}
+
+@keyframes mostrarModal {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+.VentanaMensaje .contenedor {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 14px;
+    width: 350px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+.contenedor-video {
+    width: 100%;
+    display: none;
+}
+
+.VentanaMensaje .contenedor p {
+    text-align: center;
+    margin-bottom: 10px;
+}
+.contenedor-video video {
+    border-radius: 10px;
+    width: 100%;
+    margin-bottom: 10px;
+}
+.cerrar,
+.VentanaMensaje .contenedor a {
+    padding: 9px 40px;
+    border-radius: 5px;
+}
+.cerrar {
+    display: none;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    background-color: #000;
+}
+.cerrar:hover {
+    color: #000;
+    background-color: #fff;
+    border: #000 solid 1px;
+    transition: 0.3s;
+}
+.VentanaMensaje .contenedor a {
+    display: none;
+    color: #000;
+    background-color: #86cd82;
+    text-align: center;
+    font-size: 14px;
+    margin-top: 5px;
+}
+@media (max-width: 842px) {
+    .encabezado {
+        font-size: 32px;
+    }
+}
+
+@media (max-width: 620px) {
+    .VentanaMensaje .contenedor {
+        width: 250px;
+    }
+    .encabezado {
+        font-size: 21px;
+    }
+    .formulario {
+        flex-direction: column;
+        width: 90%;
+    }
+    .formulario div {
+        width: auto;
+    }
+    .cont-inputs input,
+    .cont-inputs textarea {
+        margin-bottom: 5px;
+    }
+}
