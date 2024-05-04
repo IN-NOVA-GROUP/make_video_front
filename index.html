@@ -1,56 +1,72 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="./css/style.css" />
-        <title>Formulario</title>
-    </head>
-    <body>
-        <section>
-            <form action="" class="formulario">
-                <div>
-                    <h1 class="encabezado">Usa este portal celestial, solo llena el formulario de inspiración y como un susurro de ángeles, tu mensaje alcanzará a tu destinatario automáticamente</h1>
-                </div>
-                <div class="cont-inputs">
-                    <input type="text" name="nombreUsuario" id="nombreUsuario" placeholder="Tu nombre" /><br /><br />
-                    <input type="text" name="nombreRemitente" id="nombreRemitente" placeholder="Nombre de quien recibe" /><br /><br />
-                    <input type="number" name="celular" id="celular" placeholder="Numero de telefono de quien recibe el mensaje" /><br /><br />
-                    <textarea class="prompt" name="mensaje" id="mensaje" cols="30" rows="4" placeholder="Mensaje para esa persona"></textarea>
-                    <input class="envio" type="submit" value="Enviar" />
-                </div>
-            </form>
-            <div class="carrusel-imagenes">
-                <h2 class="encabezadoCarrusel">Haga clic en la imagen que más te guste para crear tu video</h2>
-                <div class="contenedor-img"></div>
-            </div>
-        </section>
+<html lang="es">
 
-        <!-- ventana modal -->
-        <div class="ventanaModal">
-            <div class="modal-content">
-                <div class="modal-content-img">
-                    <img class="imgModal" alt="imagen seleccionada" />
-                </div>
-                <div class="botones-modal">
-                    <button class="btnConfirmar">Confirmar</button>
-                    <button class="btnCancelar">Cancelar</button>
-                </div>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Ten el posibilidad de mandarle un lino mensaje a esa persona que tanto quieres."/>
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="icon" type="image/jpeg" href="./assets/icono.jpeg" />
+    <title>Angel</title>
+</head>
+
+<body>
+    <!-- <main id="hero"> -->
+    <section>
+        <form action="" class="formulario">
+            <div>
+                <h1 class="encabezado">Usa este portal celestial, solo llena el formulario de inspiración y como un
+                    susurro de ángeles, tu mensaje alcanzará a tu destinatario automáticamente</h1>
+            </div>
+            <div class="cont-inputs">
+                <input type="text" name="nombreUsuario" id="nombreUsuario" required="required"
+                    autocomplete="off" /><span>Tu nombre</span>
+                <input type="text" name="nombreRemitente" id="nombreRemitente" required="required"
+                    autocomplete="off" /><span>Nombre de quien recibe</span>
+                <input type="number" name="celular" id="celular" required="required" autocomplete="off" /><span># de
+                    quien recibe</span>
+                <textarea class="prompt" name="mensaje" id="mensaje" cols="30" rows="4" required="required"
+                    autocomplete="off"></textarea><span>Mensaje para esa persona</span>
+                <input class="btn-1" type="submit" value="Enviar" />
+            </div>
+        </form>
+        <div class="carrusel-imagenes">
+            <h2 class="encabezadoCarrusel">Haga clic en la imagen que más te guste para crear tu video</h2>
+            <div class="contenedor-img"></div>
+        </div>
+    </section>
+    <video muted autoplay loop>
+        <source src="./assets/videoplayback.webm" type="video/webm">
+    </video>
+    <div class="capa"></div>
+
+    <!-- ventana modal -->
+    <div class="ventanaModal">
+        <div class="modal-content">
+            <div class="modal-content-img">
+                <img class="imgModal" alt="imagen seleccionada" />
+            </div>
+            <div class="botones-modal">
+                <button class="btnConfirmar">Confirmar</button>
+                <button class="btnCancelar">Cancelar</button>
             </div>
         </div>
+    </div>
 
-        <!-- Ventana modal mensaje - video -->
-        <div class="VentanaMensaje">
-            <div class="contenedor">
-                <p id="MensajeEspera">Creando video...</p>
-                <div class="contenedor-video">
-                    <video id="videoCreado" autoplay muted loop src=""></video>
-                </div>
-                <button class="cerrar">Cerrar</button>
-                <a class="btnDescarga" download="VideoDescargaPrueba" href="reportaje-organizaciones-economia-solidaria.mp4">Descargar</a>
+    <!-- Ventana modal mensaje - video -->
+    <div class="VentanaMensaje">
+        <div class="contenedor">
+            <p id="MensajeEspera">Creando video...</p>
+            <div class="contenedor-video">
+                <video id="videoCreado" autoplay muted loop src=""></video>
             </div>
+            <button class="cerrar">Cerrar</button>
+            <a class="btnDescarga" download="VideoDescargaPrueba"
+                href="reportaje-organizaciones-economia-solidaria.mp4">Descargar</a>
         </div>
+    </div>
+    <script src="./js/script.js"></script>
+    <!-- </main> -->
+</body>
 
-        <script src="./js/script.js"></script>
-    </body>
 </html>

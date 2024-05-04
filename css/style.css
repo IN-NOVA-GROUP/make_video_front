@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@100..900&family=Poppins:ital,wght@0,300;0,500;1,200&display=swap");
+
 * {
     font-family: "Noto Sans Mono", monospace;
     box-sizing: border-box;
@@ -6,7 +7,7 @@
 }
 
 .encabezado {
-    color: #f2f5ea;
+    color: #000;
     display: flex;
     align-items: center;
     padding: 10px;
@@ -14,8 +15,8 @@
     font-weight: 100;
     font-family: "Bodoni Moda", serif;
 }
-section {
-    background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("../assets/fondo-section3.jpg");
+
+section {    
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -23,11 +24,34 @@ section {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    position: relative;
+    z-index: 2;    
+}
+
+video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.capa {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    background: #1c1c1d;
+    opacity: 0.5;
+    mix-blend-mode: overlay;
 }
 
 .formulario {
     background-color: rgba(165, 162, 162, 0.2);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(0px);
     padding: 25px;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
@@ -36,22 +60,69 @@ section {
     display: flex;
     align-items: center;
     justify-content: center;
+    /* opacity: 0.9; */
 }
+
 .formulario div {
     width: 50%;
 }
+
+.cont-inputs {
+    position: relative;
+    width: 250px;
+}
+
 .cont-inputs input,
 .cont-inputs textarea {
     width: 100%;
-    padding: 15px;
+    padding: 10px;
     margin-bottom: 20px;
     border: none;
     border-radius: 5px;
-    font-size: 16px;
-    background-color: rgba(255, 255, 255, 0.5);
+    font-size: 1em;
+    border: solid 1px rgba(255, 255, 255, .25);
+    background-color: #1d2b3a;
     backdrop-filter: blur(5px);
-    transition: transform 0.3s ease;
+    transition: .5s;
+    color: #fff;
+    outline: none;
 }
+
+.cont-inputs span {
+    position: absolute;
+    left: 0;
+    padding: 10px;
+    pointer-events: none;
+    font-size: 1em;
+    color: rgba(255, 255, 255, .25);
+    text-transform: uppercase;
+    transition: .5s;
+}
+
+.cont-inputs input:valid~span,
+.cont-inputs input:focus~span {
+    color: #00dfc4;
+    transform: translateX(10px) translateY(-7px);
+    font-size: .65em;
+    padding: 0 10px;
+    background-color: #1d2b3a;
+    border-left: solid 1px #00dfc4;
+    border-right: solid 1px #00dfc4;
+    letter-spacing: .2em;
+}
+
+.cont-inputs:nth-child(2) input:valid~span,
+.cont-inputs:nth-child(2) input:focus~span {
+    background-color: #00dfc4;
+    color: #000;
+    border-radius: 2px;
+}
+
+.cont-inputs input:valid,
+.cont-inputs input:focus {
+    border: solid 1px #00dfc4;
+}
+
 
 .cont-inputs input:hover,
 .cont-inputs textarea:hover {
@@ -60,7 +131,8 @@ section {
 
 .cont-inputs input:focus,
 .cont-inputs textarea:focus {
-    background-color: rgba(255, 255, 255, 0.7);
+    background-color: rgba(255, 255, 255, .25);
+    color: #000;
     outline: none;
 }
 
@@ -81,6 +153,7 @@ section {
     transition: transform 0.3s ease;
 }
 
+
 .envio:hover {
     transform: scale(1.05);
 }
@@ -92,6 +165,7 @@ section {
     font-weight: 100;
     font-family: "Bodoni Moda", serif;
 }
+
 .carrusel-imagenes {
     display: none;
     background-color: rgba(165, 162, 162, 0.2);
@@ -107,7 +181,8 @@ section {
     display: flex;
     flex-wrap: nowrap;
     overflow-x: auto;
-    -webkit-overflow-scrolling: touch; /* Para mejorar el scroll en dispositivos iOS */
+    -webkit-overflow-scrolling: touch;
+    /* Para mejorar el scroll en dispositivos iOS */
     margin-top: 20px;
     margin-bottom: 20px;
     padding: 10px;
@@ -116,11 +191,12 @@ section {
 .contenedor-img img {
     cursor: pointer;
     width: 100%;
-    max-width: 500px;
-    max-height: 500px;
+    max-width: 400px;
+    max-height: 400px;
     margin-right: 10px;
     border-radius: 10px;
 }
+
 .contenedor-img img:hover {
     transform: scale(1.02);
     transition: 0.3s;
@@ -159,6 +235,7 @@ section {
     max-height: 400px;
     object-fit: cover;
 }
+
 .botones-modal {
     text-align: center;
     padding: 10px;
@@ -177,6 +254,7 @@ section {
     color: #000;
     background-color: #86cd82;
 }
+
 .btnCancelar {
     color: #000;
     background-color: #ef3054;
@@ -214,10 +292,12 @@ section {
     from {
         transform: translateY(-100%);
     }
+
     to {
         transform: translateY(0);
     }
 }
+
 .VentanaMensaje .contenedor {
     display: flex;
     flex-direction: column;
@@ -228,6 +308,7 @@ section {
     width: 350px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
+
 .contenedor-video {
     width: 100%;
     display: none;
@@ -237,16 +318,19 @@ section {
     text-align: center;
     margin-bottom: 10px;
 }
+
 .contenedor-video video {
     border-radius: 10px;
     width: 100%;
     margin-bottom: 10px;
 }
+
 .cerrar,
 .VentanaMensaje .contenedor a {
     padding: 9px 40px;
     border-radius: 5px;
 }
+
 .cerrar {
     display: none;
     border: none;
@@ -254,12 +338,14 @@ section {
     color: #fff;
     background-color: #000;
 }
+
 .cerrar:hover {
     color: #000;
     background-color: #fff;
     border: #000 solid 1px;
     transition: 0.3s;
 }
+
 .VentanaMensaje .contenedor a {
     display: none;
     color: #000;
@@ -268,6 +354,7 @@ section {
     font-size: 14px;
     margin-top: 5px;
 }
+
 @media (max-width: 842px) {
     .encabezado {
         font-size: 32px;
@@ -278,16 +365,20 @@ section {
     .VentanaMensaje .contenedor {
         width: 250px;
     }
+
     .encabezado {
         font-size: 21px;
     }
+
     .formulario {
         flex-direction: column;
         width: 90%;
     }
+
     .formulario div {
         width: auto;
     }
+
     .cont-inputs input,
     .cont-inputs textarea {
         margin-bottom: 5px;
