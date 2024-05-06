@@ -112,14 +112,14 @@ section {
     padding: 10px;
     pointer-events: none;
     font-size: 1em;
-    color: rgba(255, 255, 255, .25);
+    color: #000;
     text-transform: uppercase;
     transition: .5s;
 }
 
 .cont-inputs input:valid~span,
 .cont-inputs input:focus~span {
-    color: #00dfc4;
+    color: #000;
     transform: translateX(10px) translateY(-7px);
     font-size: .65em;
     padding: 0 10px;
