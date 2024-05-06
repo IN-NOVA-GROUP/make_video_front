@@ -7,10 +7,13 @@ let mensajeListo;
 let numeroCel;
 let nombreUser;
 let nombreDestinatario;
+let prefijo;
+
 
 document.addEventListener("DOMContentLoaded", function () {
     const nombreUsuario = document.getElementById("nombreUsuario");
     const nombreRemitente = document.getElementById("nombreRemitente");
+    // const phoneInput = document.querySelector("celular");
     const celular = document.getElementById("celular");
     const mensaje = document.getElementById("mensaje");
     let formularioEnviado = false;
@@ -28,8 +31,8 @@ document.addEventListener("DOMContentLoaded", function () {
         if (nombreRemitente.value.trim() === "") {
             errores.push("Por favor, ingresa el nombre del destinatario.");
         }
-
-        const celularRegex = /^[0-9]{12}$/;
+        
+        const celularRegex = /^[0-9]{10}$/;
         if (!celularRegex.test(celular.value.trim())) {
             errores.push("El número de teléfono debe contener 10 dígitos numéricos.");
         }
@@ -63,6 +66,27 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         form.reset();
     });
+
+    // let iti = window.intlTelInput(celular, {
+    //     separateDialCode: true,
+    //     initialCountry: "co",
+    //     autoPlaceholder: "agregar código del país",
+    //     nationalMode: false,
+    //     utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+    // });
+
+    // // iti.setCountry("COL");
+    // let countryCode = iti.getSelectedCountryData().iso2;
+    // console.log(countryCode);
+
+    //Aquí integras el código de intl-tel-input para el campo de número de teléfono
+    // $("#celular").intlTelInput({
+    //     separateDialCode: true,
+    //     initialCountry: "auto",
+    //     autoPlaceholder: "agregar código del país",
+    //     nationalMode: false,
+    //     utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+    // });
 });
 
 //Trear imagenes del back
@@ -124,7 +148,7 @@ btnConfirmar.addEventListener("click", () => {
         de: nombreUser,
         para: nombreDestinatario,
         imagen: imgSeleccionada,
-        numero: numeroCel,
+        numero: `57${numeroCel}`,
         mensaje: mensajeListo,
     };
 
