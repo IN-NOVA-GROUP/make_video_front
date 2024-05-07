@@ -25,8 +25,8 @@
                     autocomplete="off" /><span>Tu nombre</span>
                 <input type="text" name="nombreRemitente" id="nombreRemitente" required="required"
                     autocomplete="off" /><span>Nombre de quien recibe</span>
-                <input type="number" name="number" id="celular" required="required"
-                    autocomplete="off" /><span># Número Telefónico:</span>
+                <input type="number" name="number" id="celular" required="required" autocomplete="off" /><span># Número
+                    Telefónico:</span>
                 <textarea class="prompt" name="mensaje" id="mensaje" cols="30" rows="4" required="required"
                     autocomplete="off"></textarea><span>Mensaje para esa persona</span>
                 <input class="btn-1" type="submit" value="Enviar" />
@@ -59,16 +59,13 @@
 
     <!-- Ventana modal mensaje - video -->
     <div class="VentanaMensaje">
-        <div class="contenedor">
-            <p id="MensajeEspera">Creando video...</p>
-            <div class="contenedor-video">
-                <video id="videoCreado" autoplay muted loop src=""></video>
-            </div>
+        <div class="contenedor">            
+            <p id="MensajeEspera"></p>
+            <div class="loader"></div>
             <button class="cerrar">Cerrar</button>
-            <a class="btnDescarga" download="VideoDescargaPrueba"
-                href="reportaje-organizaciones-economia-solidaria.mp4">Descargar</a>
         </div>
     </div>
+
     <!-- Incluye jQuery antes de tu script -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>

@@ -142,6 +142,11 @@ btnConfirmar.addEventListener("click", () => {
 
     document.querySelector("#MensajeEspera").textContent = "Creando video...";
 
+    //defenimos el temporizador para cambiar el texto de 5 segundos
+    setTimeout(function() {
+        document.querySelector("#MensajeEspera").textContent = "El video sera enviado automaticamente";    
+    }, 5000);
+
     // Enviar el mensaje y la imagen seleccionada al back
     // code here...
     const datos = {

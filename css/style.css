@@ -15,7 +15,7 @@ body {
 }
 
 .encabezado {
-    color: #000;
+    color: #242423;
     display: flex;
     align-items: center;
     padding: 10px;
@@ -26,7 +26,7 @@ body {
     /* width: 450px; */
 }
 
-.contenedor_texto{
+.contenedor_texto {
     padding-right: 10px;
     width: 400px;
 }
@@ -112,14 +112,14 @@ section {
     padding: 10px;
     pointer-events: none;
     font-size: 1em;
-    color: #000;
+    color: #242423;
     text-transform: uppercase;
     transition: .5s;
 }
 
 .cont-inputs input:valid~span,
 .cont-inputs input:focus~span {
-    color: #000;
+    color: #242423;
     transform: translateX(10px) translateY(-7px);
     font-size: .65em;
     padding: 0 10px;
@@ -294,7 +294,7 @@ section {
 
 .VentanaMensaje {
     display: none;
-    flex-direction: column;
+    /* flex-direction: column; */
     justify-content: center;
     align-items: center;
     z-index: 100;
@@ -304,7 +304,23 @@ section {
     width: 100%;
     height: 100%;
     animation: mostrarModal 1s ease-out forwards;
+    backdrop-filter: blur(2px);
 }
+
+.contenedor {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    width: 350px;
+    /* o cualquier ancho que prefieras */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(2px);
+}
+
 
 @keyframes mostrarModal {
     from {
@@ -315,6 +331,42 @@ section {
         transform: translateY(0);
     }
 }
+
+.loader {
+    display: block;
+    --height-of-loader: 4px;
+    --loader-color: #0071e2;
+    width: 130px;
+    height: var(--height-of-loader);
+    border-radius: 30px;
+    background-color: rgba(0,0,0,0.2);
+    position: relative;
+  }
+  
+  .loader::before {
+    content: "";
+    position: absolute;
+    background: var(--loader-color);
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    border-radius: 30px;
+    animation: moving 1s ease-in-out infinite;
+    ;
+  }
+  
+  @keyframes moving {
+    50% {
+      width: 100%;
+    }
+  
+    100% {
+      width: 0;
+      right: 0;
+      left: unset;
+    }
+  }
 
 .VentanaMensaje .contenedor {
     display: flex;
@@ -327,26 +379,9 @@ section {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
 
-.contenedor-video {
-    width: 100%;
-    display: none;
-}
-
 .VentanaMensaje .contenedor p {
     text-align: center;
     margin-bottom: 10px;
-}
-
-.contenedor-video video {
-    border-radius: 10px;
-    width: 100%;
-    margin-bottom: 10px;
-}
-
-.cerrar,
-.VentanaMensaje .contenedor a {
-    padding: 9px 40px;
-    border-radius: 5px;
 }
 
 .cerrar {
@@ -355,6 +390,8 @@ section {
     cursor: pointer;
     color: #fff;
     background-color: #000;
+    padding: 9px 40px;
+    border-radius: 5px;
 }
 
 .cerrar:hover {
@@ -362,15 +399,6 @@ section {
     background-color: #fff;
     border: #000 solid 1px;
     transition: 0.3s;
-}
-
-.VentanaMensaje .contenedor a {
-    display: none;
-    color: #000;
-    background-color: #86cd82;
-    text-align: center;
-    font-size: 14px;
-    margin-top: 5px;
 }
 
 @media (max-width: 842px) {
