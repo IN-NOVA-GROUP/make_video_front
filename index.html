@@ -1,76 +1,68 @@
 <!DOCTYPE html>
 <html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="Ten el posibilidad de mandarle un lino mensaje a esa persona que tanto quieres." />
+        <link rel="stylesheet" href="./css/style.css" />
+        <link rel="icon" type="image/jpeg" href="./assets/icono.jpeg" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css" />
+        <title>Angel</title>
+    </head>
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description"
-        content="Ten el posibilidad de mandarle un lino mensaje a esa persona que tanto quieres." />
-    <link rel="stylesheet" href="./css/style.css" />
-    <link rel="icon" type="image/jpeg" href="./assets/icono.jpeg" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css">
-    <title>Angel</title>
-</head>
+    <body>
+        <!-- <main id="hero"> -->
+        <section>
+            <form action="" class="formulario">
+                <div class="contenedor_texto">
+                    <p class="encabezado">Usa este portal celestial, solo llena el formulario de inspiración y como un susurro de ángeles, tu mensaje alcanzará a tu destinatario automáticamente</p>
+                </div>
+                <div class="cont-inputs">
+                    <input type="text" name="nombreUsuario" id="nombreUsuario" required="required" autocomplete="off" /><span>Tu nombre</span>
+                    <input type="text" name="nombreRemitente" id="nombreRemitente" required="required" autocomplete="off" /><span>Nombre de quien recibe</span>
+                    <input type="number" name="number" id="celular" required="required" autocomplete="off" /><span># Número Telefónico:</span>
+                    <textarea class="prompt" name="mensaje" id="mensaje" cols="30" rows="4" required="required" autocomplete="off"></textarea><span>Mensaje para esa persona</span>
+                    <input class="btn-1" type="submit" value="Enviar" />
+                </div>
+            </form>
+            <div class="carrusel-imagenes">
+                <h2 class="encabezadoCarrusel">Haga clic en la imagen que más te guste para crear tu video</h2>
+                <div class="contenedor-img"></div>
+            </div>
+        </section>
 
-<body>
-    <!-- <main id="hero"> -->
-    <section>
-        <form action="" class="formulario">
-            <div class="contenedor_texto">
-                <p class="encabezado">Usa este portal celestial, solo llena el formulario de inspiración y como un
-                    susurro de ángeles, tu mensaje alcanzará a tu destinatario automáticamente</p>
-            </div>
-            <div class="cont-inputs">
-                <input type="text" name="nombreUsuario" id="nombreUsuario" required="required"
-                    autocomplete="off" /><span>Tu nombre</span>
-                <input type="text" name="nombreRemitente" id="nombreRemitente" required="required"
-                    autocomplete="off" /><span>Nombre de quien recibe</span>
-                <input type="number" name="number" id="celular" required="required" autocomplete="off" /><span># Número
-                    Telefónico:</span>
-                <textarea class="prompt" name="mensaje" id="mensaje" cols="30" rows="4" required="required"
-                    autocomplete="off"></textarea><span>Mensaje para esa persona</span>
-                <input class="btn-1" type="submit" value="Enviar" />
-            </div>
-        </form>
-        <div class="carrusel-imagenes">
-            <h2 class="encabezadoCarrusel">Haga clic en la imagen que más te guste para crear tu video</h2>
-            <div class="contenedor-img"></div>
+        <div class="capa">
+            <video muted autoplay loop>
+                <source src="./assets/5354483-hd_1280_720_30fps.mp4" type="video/webm" />
+            </video>
         </div>
-    </section>
 
-    <div class="capa">
-        <video muted autoplay loop>
-            <source src="./assets/5354483-hd_1280_720_30fps.mp4" type="video/webm">
-        </video>
-    </div>
-
-    <!-- ventana modal -->
-    <div class="ventanaModal">
-        <div class="modal-content">
-            <div class="modal-content-img">
-                <img class="imgModal" alt="imagen seleccionada" />
-            </div>
-            <div class="botones-modal">
-                <button class="btnConfirmar">Confirmar</button>
-                <button class="btnCancelar">Cancelar</button>
+        <!-- ventana modal -->
+        <div class="ventanaModal">
+            <div class="modal-content">
+                <div class="modal-content-img">
+                    <img class="imgModal" alt="imagen seleccionada" />
+                </div>
+                <div class="botones-modal">
+                    <button class="btnConfirmar">Confirmar</button>
+                    <button class="btnCancelar">Cancelar</button>
+                </div>
             </div>
         </div>
-    </div>
 
-    <!-- Ventana modal mensaje - video -->
-    <div class="VentanaMensaje">
-        <div class="contenedor">            
-            <p id="MensajeEspera"></p>
-            <div class="loader"></div>
-            <button class="cerrar">Cerrar</button>
+        <!-- Ventana modal mensaje - video -->
+        <div class="VentanaMensaje">
+            <div class="contenedor">
+                <p id="MensajeEspera"></p>
+                <div class="loader"></div>
+                <button class="cerrar">Cerrar</button>
+            </div>
         </div>
-    </div>
 
-    <!-- Incluye jQuery antes de tu script -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
-    <script src="./js/script.js"></script>
-    <!-- </main> -->
-</body>
-
+        <!-- Incluye jQuery antes de tu script -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+        <script src="./js/script.js"></script>
+        <!-- </main> -->
+    </body>
 </html>

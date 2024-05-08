@@ -9,7 +9,6 @@ let nombreUser;
 let nombreDestinatario;
 let prefijo;
 
-
 document.addEventListener("DOMContentLoaded", function () {
     const nombreUsuario = document.getElementById("nombreUsuario");
     const nombreRemitente = document.getElementById("nombreRemitente");
@@ -31,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (nombreRemitente.value.trim() === "") {
             errores.push("Por favor, ingresa el nombre del destinatario.");
         }
-        
+
         const celularRegex = /^[0-9]{10}$/;
         if (!celularRegex.test(celular.value.trim())) {
             errores.push("El número de teléfono debe contener 10 dígitos numéricos.");
@@ -114,7 +113,7 @@ fetch(URL)
 
                 //Guardar la direccion src
                 imgSeleccionada = imgSRC.substring(imgSRC.lastIndexOf("/") + 1);
-                console.log(imgSeleccionada);
+                // console.log(imgSeleccionada);
             });
         }
     });
@@ -140,12 +139,8 @@ btnConfirmar.addEventListener("click", () => {
     //mostrar ventana con mensaje de espera
     ventanaMensaje.style.display = "flex";
 
+    //agregamos mensaje de espera en la ventana
     document.querySelector("#MensajeEspera").textContent = "Creando video...";
-
-    //defenimos el temporizador para cambiar el texto de 5 segundos
-    setTimeout(function() {
-        document.querySelector("#MensajeEspera").textContent = "El video sera enviado automaticamente";    
-    }, 9000);
 
     // Enviar el mensaje y la imagen seleccionada al back
     // code here...
@@ -170,12 +165,24 @@ btnConfirmar.addEventListener("click", () => {
     //Realizar la solicitud POST al backned
     fetch(URL_BACK, opciones)
         .then((response) => {
-            if (!response.ok) {
-                throw new Error("Error al enviar datos al servidor");
-            }
-            return response.json();
+            return response.json().then((res) => {
+                // Esperar a que la respuesta sea transformada a JSON
+                if (!response.ok) {
+                    document.querySelector("#MensajeEspera").textContent = res.message;
+                    botonCerrar.style.display = "block";
+                    document.querySelector(".loader").style.display = "none";
+
+                    throw new Error("Error al enviar datos al servidor");
+                }
+                return res;
+            });
         })
         .then((data) => {
+            //temporizador para cambiar el mensaje de espera en 10 segundos
+            setTimeout(function () {
+                document.querySelector("#MensajeEspera").textContent = "El video será enviado automaticamente";
+            }, 10000);
+
             document.querySelector("#MensajeEspera").textContent = data.message;
             setTimeout(() => {
                 botonCerrar.style.display = "block";
@@ -186,6 +193,7 @@ btnConfirmar.addEventListener("click", () => {
 
         .catch((error) => {
             console.log("Error:", error);
+            return;
         });
 });
 
