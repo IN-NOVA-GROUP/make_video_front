@@ -165,6 +165,11 @@ btnConfirmar.addEventListener("click", () => {
     //Realizar la solicitud POST al backned
     fetch(URL_BACK, opciones)
         .then((response) => {
+            //temporizador para cambiar el mensaje de espera en 10 segundos
+            setTimeout(function () {
+                document.querySelector("#MensajeEspera").textContent = "El video será enviado automaticamente";
+            }, 3000);
+            
             return response.json().then((res) => {
                 // Esperar a que la respuesta sea transformada a JSON
                 if (!response.ok) {
@@ -178,10 +183,6 @@ btnConfirmar.addEventListener("click", () => {
             });
         })
         .then((data) => {
-            //temporizador para cambiar el mensaje de espera en 10 segundos
-            setTimeout(function () {
-                document.querySelector("#MensajeEspera").textContent = "El video será enviado automaticamente";
-            }, 10000);
 
             document.querySelector("#MensajeEspera").textContent = data.message;
             setTimeout(() => {
