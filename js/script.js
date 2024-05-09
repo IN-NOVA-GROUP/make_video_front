@@ -177,6 +177,8 @@ btnConfirmar.addEventListener("click", async () => {
     }
 
     document.querySelector("#MensajeEspera").textContent = data.message;
+    botonCerrar.style.display = "block";
+    document.querySelector(".loader").style.display = "none";
 
 });
 
