@@ -164,42 +164,44 @@ btnConfirmar.addEventListener("click", () => {
 
     //Realizar la solicitud POST al backned
     fetch(URL_BACK, opciones)
-    .then((response) => {
-        if (!response.ok) {
-            return response.json().then((res) => {
-                document.querySelector("#MensajeEspera").textContent = res.message;
-                botonCerrar.style.display = "block";
-                document.querySelector(".loader").style.display = "none";
-                throw new Error("Error al enviar datos al servidor");
-            });
-        } else {
-            // Si la respuesta es satisfactoria, muestra el mensaje "El video será enviado automáticamente"
-            setTimeout(function () {
-                document.querySelector("#MensajeEspera").textContent = "El video será enviado automáticamente";
-            }, 3000);
+        .then((response) => {
+            if (!response.ok) {
+                return response.json().then((res) => {
+                    document.querySelector("#MensajeEspera").textContent = res.message;
+                    botonCerrar.style.display = "block";
+                    document.querySelector(".loader").style.display = "none";
+                    throw new Error("Error al enviar datos al servidor");
+                });
+            } else {
+                // Si la respuesta es satisfactoria, muestra el mensaje "El video será enviado automáticamente"
+                setTimeout(function () {
+                    document.querySelector("#MensajeEspera").textContent = "El video será enviado automáticamente";
+                }, 3000);
 
-            // Continuar con la promesa
-            return response.json();
-        }
-    })
-    .then((data) => {
-        // Muestra el mensaje recibido solo si la respuesta fue exitosa
-        document.querySelector("#MensajeEspera").textContent = data.message;
-        botonCerrar.style.display = "block";
-        // Aquí puedes agregar más acciones si el video se envió correctamente
-    })
-    .catch((error) => {
-        console.log("Error:", error);
-        // Aquí puedes manejar errores de manera apropiada
+                // Continuar con la promesa
+                return response.json();
+            }
+        })
+        .then((data) => {
+            // Muestra el mensaje recibido solo si la respuesta fue exitosa
+            document.querySelector("#MensajeEspera").textContent = data.message;
+            botonCerrar.style.display = "block";
+            // Aquí puedes agregar más acciones si el video se envió correctamente
+        })
+
+        .catch((error) => {
+            console.log("Error:", error);
+            // Aquí puedes manejar errores de manera apropiada
+        })
     });
 
-// fetch()
-//     .then((res) => res.json())
-//     .then((data) => {
-//         const video = document.querySelector("#videoCreado");
-//         video.src = data.url;
-//     });
+    // fetch()
+    //     .then((res) => res.json())
+    //     .then((data) => {
+    //         const video = document.querySelector("#videoCreado");
+    //         video.src = data.url;
+    //     });
 
-botonCerrar.addEventListener("click", () => {
-    ventanaMensaje.style.display = "none";
-});
+    botonCerrar.addEventListener("click", () => {
+        ventanaMensaje.style.display = "none";
+    });
