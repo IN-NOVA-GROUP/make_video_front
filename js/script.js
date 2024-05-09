@@ -126,7 +126,7 @@ cerrarModal.addEventListener("click", () => {
 const ventanaMensaje = document.querySelector(".VentanaMensaje");
 const botonCerrar = document.querySelector(".cerrar");
 const btnConfirmar = document.querySelector(".btnConfirmar");
-btnConfirmar.addEventListener("click", () => {
+btnConfirmar.addEventListener("click", async () => {
     //ocultar ventana modal
     ventanaModal.style.display = "none";
 
@@ -152,56 +152,34 @@ btnConfirmar.addEventListener("click", () => {
         mensaje: mensajeListo,
     };
 
-    const URL_BACK = "https://videoangelicaldemo.onrender.com/api/v1/generate";
+    // const URL_BACK = "https://videoangelicaldemo.onrender.com/api/v1/generate";
 
-    const opciones = {
+    setTimeout(() => { document.querySelector("#MensajeEspera").textContent = "El video se enviara automaticamente" },
+        30000);
+
+    //Realizar la solicitud POST al backned
+    const response = await fetch("https://videoangelicaldemo.onrender.com/api/v1/generate", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
+            Accept: "application/json"
         },
         body: JSON.stringify(datos),
-    };
-
-    //Realizar la solicitud POST al backned
-    fetch(URL_BACK, opciones)
-        .then((response) => {
-            if (!response.ok) {
-                return response.json().then((res) => {
-                    document.querySelector("#MensajeEspera").textContent = res.message;
-                    botonCerrar.style.display = "block";
-                    document.querySelector(".loader").style.display = "none";
-                    throw new Error("Error al enviar datos al servidor");
-                });
-            } else {
-                // Si la respuesta es satisfactoria, muestra el mensaje "El video será enviado automáticamente"
-                setTimeout(function () {
-                    document.querySelector("#MensajeEspera").textContent = "El video será enviado automáticamente";
-                }, 3000);
-
-                // Continuar con la promesa
-                return response.json();
-            }
-        })
-        .then((data) => {
-            // Muestra el mensaje recibido solo si la respuesta fue exitosa
-            document.querySelector("#MensajeEspera").textContent = data.message;
-            botonCerrar.style.display = "block";
-            // Aquí puedes agregar más acciones si el video se envió correctamente
-        })
-
-        .catch((error) => {
-            console.log("Error:", error);
-            // Aquí puedes manejar errores de manera apropiada
-        })
     });
 
-    // fetch()
-    //     .then((res) => res.json())
-    //     .then((data) => {
-    //         const video = document.querySelector("#videoCreado");
-    //         video.src = data.url;
-    //     });
+    const data = await response.json();
 
-    botonCerrar.addEventListener("click", () => {
-        ventanaMensaje.style.display = "none";
-    });
+    if (!response.ok) {
+        document.querySelector("#MensajeEspera").textContent = data.message;
+        botonCerrar.style.display = "block";
+        document.querySelector(".loader").style.display = "none";
+        return;
+    }
+
+    document.querySelector("#MensajeEspera").textContent = data.message;
+
+});
+
+botonCerrar.addEventListener("click", () => {
+    ventanaMensaje.style.display = "none";
+});
