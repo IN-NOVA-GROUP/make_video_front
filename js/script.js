@@ -1,3 +1,4 @@
+
 //variables globales
 const carruselImagenes = document.querySelector(".carrusel-imagenes");
 const ventanaModal = document.querySelector(".ventanaModal");
@@ -90,7 +91,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 //Trear imagenes del back
 
-const URL = "https://videoangelicaldemo.onrender.com/api/v1/imgs";
+const URL = "http://191.101.18.129:4000/api/v1/imgs";
 fetch(URL)
     .then((res) => res.json())
     .then((data) => {
@@ -152,13 +153,13 @@ btnConfirmar.addEventListener("click", async () => {
         mensaje: mensajeListo,
     };
 
-    // const URL_BACK = "https://videoangelicaldemo.onrender.com/api/v1/generate";
+    // const URL_BACK = "https://191.101.18.129:4000/api/v1/generate";
 
     setTimeout(() => { document.querySelector("#MensajeEspera").textContent = "El video se enviara automaticamente" },
         30000);
 
     //Realizar la solicitud POST al backned
-    const response = await fetch("https://videoangelicaldemo.onrender.com/api/v1/generate", {
+    const response = await fetch("http://191.101.18.129:4000/api/v1/generate", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
